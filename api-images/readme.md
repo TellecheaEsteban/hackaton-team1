@@ -6,7 +6,7 @@
 
 # Iniciar
 
-`python3 -m flask --app main run`
+`python3 -m flask --app main run --host=0.0.0.0`
 
 Por defecto en `http://localhost:5000`
 
