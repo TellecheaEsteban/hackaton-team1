@@ -72,7 +72,7 @@ def process_image():
         x,y,w,h = box[0],box[1],box[2],box[3]
         cv2.rectangle(image,(x,y),(x+w,h+y),color = (0,255,0), thickness =2)
         values[classNames[classIds[i]-1]] = values.get(classNames[classIds[i]-1], 0) + 1
-        skus.append(int(classIds[i]-1))
+        skus.append(str(classNames[classIds[i]-1]))
         cv2.putText(image,classNames[classIds[i]-1],(box[0]+10,box[1]+30), cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
 
     _, buffer = cv2.imencode('.jpg', image)
