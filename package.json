@@ -1,0 +1,19 @@
+{
+  "name": "hackaton-grupo1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "openai": "^4.63.0"
+  },
+  "type": "module"  
+}
