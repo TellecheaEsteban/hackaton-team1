@@ -86,6 +86,7 @@ def process_image(img = None):
     img = base64.b64encode(buffer).decode()
 
     dic = {}
+    skus.sort(reverse=True)
 
     dic['img'] = str(img)
     dic['skus'] = skus
