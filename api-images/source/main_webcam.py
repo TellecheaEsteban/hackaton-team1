@@ -20,9 +20,16 @@ def get_image():
     return cv2.imread("../input.png")
 
 
-def process_image():
-    # get_image for camera
-    image = get_image()
+def process_image(img = None):
+    image = None
+
+    if img is None:
+        # get_image for camera
+        image = get_image()
+    else:
+        decoded_data = base64.b64decode(img)
+        np_data = np.fromstring(decoded_data,np.uint8)
+        image = cv2.imdecode(np_data,cv2.IMREAD_UNCHANGED)
 
     #Read in the image file
     thres = 0.45 #Threshold to detect object
