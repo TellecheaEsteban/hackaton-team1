@@ -4,16 +4,29 @@ import cv2
 import numpy as np
 import os
 
-def process_image():
-    #Read in the image file
-    thres = 0.45 #Threshold to detect object
-    nms_threshold = 0.5 #NMS
+def get_camera():
     cap = cv2.VideoCapture("rtsp://10.0.5.119:8080/h264.sdp")
 
     cap.set(3,1280)
     cap.set(4,720)
     cap.set(10,150)
 
+    # Start Webcam
+    _, image = cap.read()
+    return image
+
+
+def get_image():
+    return cv2.imread("../input.png")
+
+
+def process_image():
+    # get_image for camera
+    image = get_image()
+
+    #Read in the image file
+    thres = 0.45 #Threshold to detect object
+    nms_threshold = 0.5 #NMS
 
     #Import the class names
     classNames = []
@@ -38,8 +51,6 @@ def process_image():
     net.setInputMean((127.5,127.5,127.5))
     net.setInputSwapRB(True)
 
-    # Start Webcam
-    success, image = cap.read()
     # Tuple unpacking net.detect provides ID of object, confidence and bounding box
     classIds, confs, bbox = net.detect(image,confThreshold = thres)
 
